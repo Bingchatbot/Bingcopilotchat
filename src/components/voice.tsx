@@ -8,7 +8,7 @@ import { voiceListenAtom } from '@/state'
 import { SVG } from './ui/svg'
 import { cn } from '@/lib/utils'
 
-const sr = new SR(['发送', '清空', '退出'])
+const sr = new SR(['отправить', 'очистить', 'выход'])
 
 const Voice = ({ setInput, input, sendMessage, isSpeaking, className }: Pick<BingReturnType, 'setInput' | 'sendMessage' | 'input' | 'isSpeaking'> & { className?: string }) => {
   const setListen = useSetAtom(voiceListenAtom)
@@ -24,12 +24,12 @@ const Voice = ({ setInput, input, sendMessage, isSpeaking, className }: Pick<Bin
   useEffect(() => {
     sr.onchange = (msg: string, command?: string) => {
       switch (command) {
-        case '退出':
+        case 'выход':
           sr.stop()
           break;
-        case '发送':
+        case 'отправить':
           sendMessage(input)
-        case '清空':
+        case 'очистить':
           setInput('')
           break;
         default:
