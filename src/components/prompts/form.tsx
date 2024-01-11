@@ -42,10 +42,10 @@ const PromptItem = (props: {
         <div title={props.prompt} className="truncate text-sm font-medium text-primary-text">{props.title}</div>
       </div>
       <div className="flex flex-row gap-1">
-        <ActionButton text="使用" onClick={() => props.insertPrompt(props.prompt)} />
-        {props.edit && <ActionButton text="编辑" onClick={props.edit} />}
-        {props.addToLocal && <ActionButton text={saved ? '已添加' : '添加'} onClick={copyToLocal} />}
-        {props.remove && <ActionButton text="删除" onClick={props.remove} />}
+        <ActionButton text="Применить" onClick={() => props.insertPrompt(props.prompt)} />
+        {props.edit && <ActionButton text="Редактировать" onClick={props.edit} />}
+        {props.addToLocal && <ActionButton text={saved ? 'Добавлен' : 'Добавить в'} onClick={copyToLocal} />}
+        {props.remove && <ActionButton text="Удалить" onClick={props.remove} />}
       </div>
     </div>
   )
@@ -71,16 +71,16 @@ function PromptForm(props: { initialData: Prompt; onSubmit: (data: Prompt) => vo
   return (
     <form className="flex flex-col gap-2 w-full" onSubmit={onSubmit}>
       <div className="w-full">
-        <span className="text-sm font-semibold block mb-1 text-primary-text">提示词标题</span>
+        <span className="text-sm font-semibold block mb-1 text-primary-text">Подсказка названия слова</span>
         <Input className="w-full" name="title" defaultValue={props.initialData.title} />
       </div>
       <div className="w-full">
-        <span className="text-sm font-semibold block mb-1 text-primary-text">提示词内容</span>
+        <span className="text-sm font-semibold block mb-1 text-primary-text">Содержимое запроса</span>
         <Textarea className="w-full" name="prompt" defaultValue={props.initialData.prompt} />
       </div>
       <div className="flex flex-row gap-2 mt-1">
-        <Button color="primary" className="w-fit" type="submit">保存</Button>
-        <Button variant="secondary" className="w-fit" onClick={props.onClose}>取消</Button>
+        <Button color="primary" className="w-fit" type="submit">Сохранить</Button>
+        <Button variant="secondary" className="w-fit" onClick={props.onClose}>Отмена</Button>
       </div>
     </form>
   )
@@ -127,14 +127,14 @@ function LocalPrompts(props: { insertPrompt: (text: string) => void }) {
         </div>
       ) : (
         <div className="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-3 text-center text-sm mt-5 text-primary-text">
-          你还没有提示词，请手动添加
+          У вас еще нет слова-подсказки, добавьте его вручную.
         </div>
       )}
       <div className="mt-5">
         {formData ? (
           <PromptForm initialData={formData} onSubmit={savePrompt} onClose={() => setFormData(null)} />
         ) : (
-          <Button onClick={create}>创建提示词</Button>
+          <Button onClick={create}>Создать слово-подсказку</Button>
         )}
       </div>
     </>
@@ -146,7 +146,7 @@ function CommunityPrompts(props: { insertPrompt: (text: string) => void }) {
   const [remotePrompts, setRemotePrompts] = useState<Prompt[]>([])
 
   useEffect(() => {
-    fetch('./prompts/zh-CN.json')
+    fetch('./prompts/en-US.json')
     .then(res => res.json())
     .then(data => {
       setRemotePrompts(data)
@@ -171,7 +171,7 @@ function CommunityPrompts(props: { insertPrompt: (text: string) => void }) {
         )) : <PulseLoader size={10} className="mt-5" color="var(--cib-color-fill-accent-gradient-primary)" />}
       </div>
       <span className="text-sm mt-5 block text-primary-text">
-        提示词贡献地址：
+        Подскажите адрес для ввода слова:
         <a
           href="https://github.com/weaigc/bingo"
           target="_blank"
@@ -195,8 +195,8 @@ const Prompts = (props: { insertPrompt: (text: string) => void }) => {
 
   const tabs = useMemo<Tab[]>(
     () => [
-      { name: '我的词库', value: 'local' },
-      { name: '公开词库', value: 'network' },
+      { name: 'Мой лексикон', value: 'local' },
+      { name: 'Общий лексикон', value: 'network' },
     ],
     [],
   )
