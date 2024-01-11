@@ -124,8 +124,8 @@ export class BingWebBot {
     const uuid = randomUUID()
     const useBaseSets = (conversation.context?.length ?? 0) > 0
     const message = {
-      locale: 'zh-CN',
-      market: 'zh-CN',
+      locale: 'ru-RU',
+      market: 'ru-RU',
       region: 'US',
       locationHints: [
         {
@@ -250,7 +250,7 @@ export class BingWebBot {
     }
 
     if (!resp?.result) {
-      throw new ChatError('你的 VPS 或代理可能被封禁，如有疑问，请前往 https://github.com/weaigc/bingo 咨询', ErrorCode.BING_IP_FORBIDDEN)
+      throw new ChatError('Ваш VPS или прокси-сервер могут быть заблокированы. Если у вас есть какие-либо вопросы, перейдите на https://github.com/Bingchatbot/Bingcopilotchat для консультации.', ErrorCode.BING_IP_FORBIDDEN)
     }
 
     const { value, message } = resp.result || {}
@@ -386,7 +386,7 @@ export class BingWebBot {
       unpackMessage: websocketUtils.unpackMessage,
       createWebSocket: (url) => new WebSocket(url, {
         headers: {
-          'accept-language': 'zh-CN,zh;q=0.9',
+          'accept-language': 'ru-RU;q=0.9',
           'cache-control': 'no-cache',
           pragma: 'no-cache',
           cookie: this.cookie,
