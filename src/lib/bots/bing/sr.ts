@@ -24,7 +24,7 @@ export class SR {
     if (!this.recognition) {
       return
     }
-    this.configuration('zh-CN')
+    this.configuration('ru-RU')
     if (commands.length) {
       this.commandsRe = new RegExp(`^(${commands.join('|')})。?$`)
     }
@@ -56,7 +56,7 @@ export class SR {
     }
   }
 
-  private configuration = async (lang: string = 'zh-CN') => {
+  private configuration = async (lang: string = 'ru-RU') => {
     return new Promise((resolve) => {
       if (this.recognition) {
         this.recognition.continuous = true
