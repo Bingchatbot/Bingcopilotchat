@@ -30,7 +30,7 @@ export function UserMenu() {
 
   useEffect(() => {
     if (isCopied) {
-      toast.success('复制成功')
+      toast.success('копирование прошло успешно')
     }
   }, [isCopied])
   return (
@@ -41,7 +41,7 @@ export function UserMenu() {
             <div className="flex items-center justify-center text-xs font-medium uppercase rounded-full select-none h-7 w-7 shrink-0 bg-muted/50 text-muted-foreground">
               <SVG alt="settings" src={SettingIcon} width={20} />
             </div>
-            <span className="ml-2">设置</span>
+            <span className="ml-2">Настройки</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent sideOffset={8} align="start" className="w-[180px] bg-background">
@@ -51,7 +51,7 @@ export function UserMenu() {
             }
             className="cursor-pointer"
           >
-            用户信息
+            Информация о пользователе
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
@@ -60,7 +60,7 @@ export function UserMenu() {
             }
             className="cursor-pointer"
           >
-            高级设置
+            Расширенные настройки
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
@@ -69,7 +69,7 @@ export function UserMenu() {
             }
             className="cursor-pointer"
           >
-            语音设置
+            Настройки голоса
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
@@ -78,7 +78,7 @@ export function UserMenu() {
             }
             className="cursor-pointer"
           >
-            提示词管理
+            Управление запросами
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
@@ -88,7 +88,7 @@ export function UserMenu() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-between w-full gap-2 cursor-pointer"
             >
-              开源地址
+              Адрес с открытым исходным кодом
               <IconGitHub />
               <IconExternalLink className="w-3 h-3 ml-auto" />
             </a>
@@ -101,21 +101,21 @@ export function UserMenu() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-between w-full gap-2 cursor-pointer"
             >
-              复制站点
+              Копировать сайт
               <IconExternalLink className="w-3 h-3 ml-auto" />
             </a>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem className="flex-col items-start">
-            <div className="font-medium">版本信息 {pkg.version}</div>
+            <div className="font-medium">Информация о версии {pkg.version}</div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           {installPrompt && <DropdownMenuItem className="flex-col items-start">
-            <div className="font-medium" onClick={() => installPrompt.prompt?.()}>安装 Bing 到桌面</div>
+            <div className="font-medium" onClick={() => installPrompt.prompt?.()}>Установить Bing на рабочий стол</div>
           </DropdownMenuItem>}
           <DropdownMenuSeparator />
           <DropdownMenuItem className="flex-col items-start">
-            <div className="font-medium">站点域名</div>
+            <div className="font-medium">Доменное имя сайта</div>
             <div onClick={() => copyToClipboard(host)} className="flex gap-1 text-xs text-zinc-500 cursor-pointer">
               {host} <IconCopy />
             </div>
