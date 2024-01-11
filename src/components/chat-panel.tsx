@@ -116,10 +116,10 @@ export function ChatPanel({
           </div>
           <div className={cn('outside-left-container', { collapsed: focused })}>
             <div className="button-compose-wrapper">
-              <button className="body-2 button-compose" type="button" aria-label="新主题" onClick={resetConversation}>
+              <button className="body-2 button-compose" type="button" aria-label="Новая тема" onClick={resetConversation}>
                 <div className="button-compose-content">
                   <SVG className="pl-2" alt="new topic" src={NewTopic} width={40} fill="currentColor" />
-                  <div className="button-compose-text">新主题</div>
+                  <div className="button-compose-text">Новая тема</div>
                 </div>
               </button>
             </div>
@@ -141,7 +141,7 @@ export function ChatPanel({
                 rows={1}
                 value={input}
                 onChange={e => setInput(e.target.value.slice(0, 8000))}
-                placeholder={voiceListening ? '持续对话中...对话完成说“发送”即可' : 'Shift + Enter 换行，输入 / 选择提示词'}
+                placeholder={voiceListening ? 'Текущий разговор... Просто скажите «Отправить», когда разговор будет завершен' : 'Shift + Enter чтобы изменить строку, введите/выберите слово-подсказку'}
                 spellCheck={false}
                 className="message-input min-h-[24px] w-full text-base resize-none bg-transparent focus-within:outline-none"
               />
